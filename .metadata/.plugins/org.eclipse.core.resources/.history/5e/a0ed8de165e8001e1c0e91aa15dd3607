@@ -1,0 +1,58 @@
+package com.telusko.service;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.telusko.dao.Question;
+import com.telusko.repo.QuestionRepo;
+
+@Service 
+public class QuestionService 
+{
+	@Autowired
+	private QuestionRepo qrepo;
+	
+	public List<Question> getAllQuestions()
+	{
+		return qrepo.findAll();
+	}
+	
+	public String addQuestion(Question question)
+	{
+		Integer id=qrepo.save(question).getId();
+		return "Question added with id : "+id;
+	}
+	
+	public List<Question> getQuestionsByCategory(String category)
+	{
+		return qrepo.findByCategory(category);
+	}
+	
+	public String updateQuestionById(Integer id,Question question) 
+	{
+		 if(qrepo.findById(id).isPresent())
+		 {
+			 qrepo.save(question);
+			 return "Question with id "+id+" has updated successfully!!";
+		 }
+		 else
+		 {
+			 return "Question with id "+id+" doesn't exist!!";
+		 }
+	}
+	
+	public String deleteQuestionById(Integer id) 
+	{
+		 if(qrepo.findById(id).isPresent())
+		 {
+			 qrepo.deleteById(id);
+			 return "Question with id "+id+" has deleted successfully!!";
+		 }
+		 else
+		 {
+			 return "Question with id "+id+" doesn't exist!!";
+		 }
+	}
+	
+}

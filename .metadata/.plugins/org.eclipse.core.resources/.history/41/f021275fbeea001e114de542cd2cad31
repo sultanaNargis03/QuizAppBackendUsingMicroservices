@@ -1,0 +1,9 @@
+package com.telusko.model;
+
+public class QuizDto {
+
+	public QuizDto() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

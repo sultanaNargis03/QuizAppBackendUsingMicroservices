@@ -1,0 +1,34 @@
+package com.telusko.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.telusko.model.Question;
+import com.telusko.model.Quiz;
+import com.telusko.repo.QuestionRepo;
+import com.telusko.repo.QuizRepo;
+
+@Service
+public class QuizService 
+{
+	@Autowired
+	private QuizRepo repo1;
+	
+	@Autowired
+	private QuestionRepo repo2;
+	
+	public String createQuiz(String category,Integer numQ,String title)
+	{
+		List<Question> questions = repo2.findRandomQuestionsByCategory(category,numQ);
+		Quiz quiz=new Quiz();
+		quiz.setTitle(title);
+		quiz.setQuestions(questions);
+		repo1.save(quiz);
+		
+		return "Quiz created successfully with id "+quiz.getId();
+	}
+}

@@ -1,0 +1,12 @@
+package com.telusko.repo;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.telusko.dao.Question;
+
+public interface QuestionRepo extends JpaRepository<Question,Integer> 
+{
+	 List<Question> findByCategory(String category);
+}

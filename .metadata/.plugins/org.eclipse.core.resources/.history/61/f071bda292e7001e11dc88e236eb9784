@@ -1,0 +1,5 @@
+package com.telusko.repo;
+
+public interface QuestionRepo {
+
+}

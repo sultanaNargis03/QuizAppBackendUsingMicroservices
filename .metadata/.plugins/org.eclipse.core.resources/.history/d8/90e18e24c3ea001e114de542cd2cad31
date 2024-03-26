@@ -1,0 +1,6 @@
+package com.telusko.feign;
+
+public interface QuizInteface 
+{
+
+}
