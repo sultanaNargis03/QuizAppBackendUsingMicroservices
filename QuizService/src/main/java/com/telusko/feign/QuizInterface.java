@@ -15,12 +15,12 @@ import com.telusko.model.Response;
 @FeignClient("QUESTIONSERVICE")
 public interface QuizInterface 
 {
-	@GetMapping("/question/randomquestion")
+	@GetMapping("QuestionService/question/randomquestion")
 	public ResponseEntity<List<Integer>> getQuestionsForQuiz(@RequestParam String category,@RequestParam Integer numQ);
 	
-	@PostMapping("/question/getquestions")
+	@PostMapping("QuestionService/question/getquestions")
 	public ResponseEntity<List<QuestionWrapper>> getQuestionsFromId(@RequestBody List<Integer> questionIds);
 	
-	@PostMapping("/question/getscore")
+	@PostMapping("QuestionService/question/getscore")
 	public ResponseEntity<Integer> getQuizScore(@RequestBody List<Response> responses);
 }
