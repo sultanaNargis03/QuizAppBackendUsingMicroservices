@@ -10,8 +10,19 @@ public class QuestionWrapper
 	private String option2;
 	private String option3;
 	private String option4;
+	private String rightAnswer;
 	
 	
+	public String getRightAnswer() {
+		return rightAnswer;
+	}
+
+
+	public void setRightAnswer(String rightAnswer) {
+		this.rightAnswer = rightAnswer;
+	}
+
+
 	public QuestionWrapper() 
 	{
 		
@@ -19,7 +30,7 @@ public class QuestionWrapper
 
 	
 	public QuestionWrapper(Integer id, String questionTitle, String option1, String option2, String option3,
-			String option4) {
+			String option4,String rightAnswer) {
 		super();
 		this.id = id;
 		this.questionTitle = questionTitle;
@@ -27,6 +38,7 @@ public class QuestionWrapper
 		this.option2 = option2;
 		this.option3 = option3;
 		this.option4 = option4;
+		this.rightAnswer=rightAnswer;
 	}
 
 
@@ -84,7 +96,7 @@ public class QuestionWrapper
 	@Override
 	public String toString() {
 		return "QuestionWrapper [id=" + id + ", questionTitle=" + questionTitle + ", option1=" + option1 + ", option2="
-				+ option2 + ", option3=" + option3 + ", option4=" + option4 + "]";
+				+ option2 + ", option3=" + option3 + ", option4=" + option4 + ", rightAnswer=" + rightAnswer + "]";
 	}
 
 

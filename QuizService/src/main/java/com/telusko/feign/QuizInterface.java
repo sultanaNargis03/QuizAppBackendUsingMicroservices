@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +14,7 @@ import com.telusko.model.QuestionWrapper;
 import com.telusko.model.Response;
 
 @FeignClient("QUESTIONSERVICE")
+@CrossOrigin(origins="http://localhost:5173/")
 public interface QuizInterface 
 {
 	@GetMapping("QuestionService/question/randomquestion")

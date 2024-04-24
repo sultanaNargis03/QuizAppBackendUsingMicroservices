@@ -7,6 +7,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
+import org.springframework.util.MultiValueMap;
+
+
 import com.telusko.exception.QuizNotfoundException;
 import com.telusko.feign.QuizInterface;
 import com.telusko.model.QuestionWrapper;
@@ -22,6 +25,13 @@ public class QuizService
 	
 	@Autowired
 	private QuizInterface quizInterface;
+
+
+
+	public List<Quiz> getallquizes()
+	{
+		return quizRepo.findAll();
+	}
 	
 	public String createQuiz(String category,Integer numQ,String title)
 	{
@@ -69,5 +79,19 @@ public class QuizService
 			throw new QuizNotfoundException("Quiz with id "+id+" not exist!!");
 		}
 		
+	}
+
+	public String deleteQuizById(Integer id) 
+	{
+		 if(quizRepo.findById(id).isPresent())
+		 {
+			 quizRepo.deleteById(id);
+			 
+			 return "Quiz with id "+id+" has deleted successfully!!";
+		 }
+		 else
+		 {
+			 throw new QuizNotfoundException("Quiz with id "+id+" doesn't exist!!");
+		 }
 	}
 }

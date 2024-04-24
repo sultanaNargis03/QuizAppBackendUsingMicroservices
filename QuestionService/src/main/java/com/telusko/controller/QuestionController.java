@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +28,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @RestController
 @RequestMapping("/question")
 @Tag(name="QuestionService",description="This API URL will help to perform question related operations")
+@CrossOrigin(origins="http://localhost:5173/")
 public class QuestionController 
 {
 	@Autowired
@@ -54,6 +56,12 @@ public class QuestionController
 	public ResponseEntity<List<Question>> getQuestionsByCategory(@PathVariable String category)
 	{
 		return new ResponseEntity(questionService.getQuestionsByCategory(category),HttpStatus.OK);
+	}
+	@Operation(summary="GET operation",description="API will accept json question Id and return  question that matches with the  particular Id")
+	@GetMapping("/getQuestion/{id}")
+	public ResponseEntity<Question> getQuestionById(@PathVariable Integer id)
+	{
+		return new ResponseEntity(questionService.getQuestionById(id),HttpStatus.OK);
 	}
 	
 	@Operation(summary="PUT operation",description="API will accept json question id and json question object and update the question accordinngly")

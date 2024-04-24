@@ -2,9 +2,11 @@ package com.telusko.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.springframework.util.MultiValueMap;
 
 import com.telusko.exception.QuestionNotFoundException;
 import com.telusko.model.Question;
@@ -86,6 +88,7 @@ public class QuestionService
 			wrapper.setOption2(question.getOption2());
 			wrapper.setOption3(question.getOption3());
 			wrapper.setOption4(question.getOption4());
+			wrapper.setRightAnswer(question.getRightAnswer());
 			
 			wrappers.add(wrapper);
 		}
@@ -106,6 +109,16 @@ public class QuestionService
 			}
 
 		return score;
+	}
+
+	public Question getQuestionById(Integer id) {
+		
+		Question question=null;
+		if(questionRepo.findById(id).isPresent())
+		{
+			 question= questionRepo.findById(id).get();
+		}
+		return question;
 	}
 	
 }

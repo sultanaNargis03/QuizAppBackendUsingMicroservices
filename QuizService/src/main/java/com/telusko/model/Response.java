@@ -1,6 +1,8 @@
 package com.telusko.model;
 
-public class Response 
+import java.io.Serializable;
+
+public class Response implements Serializable
 {
 	private Integer id;
 	private  String response;
