@@ -42,7 +42,7 @@ spring.datasource.password=yourpassword
     The application exposes RESTful endpoints:
 
 1. QuizService
-
+    api->http://localhost:9092/QuizService
 - POST/api/create - create a new quiz
 - GET /api/allquiz - Retrieve all quizes
 - POST /api/submit/{id} - Submit the quiz
@@ -51,7 +51,7 @@ spring.datasource.password=yourpassword
 
 
 2. QuestionService
-
+    api->http://localhost:9091/QuestionService
 - POST/api/addquestion - add a new question
 - GET /api/allquestions - Retrieve all questions
 - GET /api/category/{category} - Retrieve question by CATEGORY
